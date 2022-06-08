@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 use App\Models\Post;
 
@@ -58,9 +59,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        return view('admin.posts.edit', compact('post'));
     }
 
     /**
@@ -70,9 +71,13 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $data = $request->all();
+        $post['slug'] = Str::slug($post->title, '-');
+        $post -> update($data);
+
+        return redirect() -> route('admin.posts.index') -> with('message', "Hai modificato con successo il post di <span class='font-italic'>$post->firm</span>");
     }
 
     /**
