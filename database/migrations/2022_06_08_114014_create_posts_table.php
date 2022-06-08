@@ -18,8 +18,8 @@ class CreatePostsTable extends Migration
             $table->string('title');
             $table->string('slug');
             $table->text('content');
-            $table->string('image');
-            $table->string('firm');
+            $table->string('image') -> default(null);
+            $table->string('firm') -> default('Sconosciuto');
             $table->timestamps();
         });
     }

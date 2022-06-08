@@ -1,9 +1,10 @@
-const deleteForm = document.querySelectorAll('.deleteForm')
+const deleteForm = document.querySelectorAll('.delete-form')
 
-deleteForm.forEach(element => {
-    element.addEventListener('submit', (e) => {
+deleteForm.forEach(form => {
+    form.addEventListener('submit', (e) => {
         e.preventDefault();
-        const confirmation = confirm('Sei sicuro di voler cancellare il post');
+        const confirmation = confirm('Sei sicuro di voler cancellare il post?');
         if(confirmation) e.target.submit();
     });
 });
+

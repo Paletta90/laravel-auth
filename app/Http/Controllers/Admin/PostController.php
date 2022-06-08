@@ -39,6 +39,15 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
+        // Validazione
+        $request -> validate(
+            [
+                'title' => 'required',
+                'content' => 'required',
+                'firm' => 'required',
+            ]
+        );
+
         $data = $request->all();
         $post = new Post();
         $post -> fill($data);
@@ -79,6 +88,15 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
+        // Validazione
+        $request -> validate(
+            [
+                'title' => 'required',
+                'content' => 'required',
+                'firm' => 'required',
+            ]
+        );
+        
         $data = $request->all();
         $post['slug'] = Str::slug($post->title, '-');
         $post -> update($data);

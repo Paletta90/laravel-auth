@@ -93,11 +93,11 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-var deleteForm = document.querySelectorAll('.deleteForm');
-deleteForm.forEach(function (element) {
-  element.addEventListener('submit', function (e) {
+var deleteForm = document.querySelectorAll('.delete-form');
+deleteForm.forEach(function (form) {
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
-    var confirmation = confirm('Sei sicuro di voler cancellare il post');
+    var confirmation = confirm('Sei sicuro di voler cancellare il post?');
     if (confirmation) e.target.submit();
   });
 });
